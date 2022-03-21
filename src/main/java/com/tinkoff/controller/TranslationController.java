@@ -1,6 +1,7 @@
 package com.tinkoff.controller;
 
 import com.tinkoff.dto.RequestTranslationDTO;
+import com.tinkoff.dto.ResponseTranslationDTO;
 import com.tinkoff.service.TranslationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ public class TranslationController {
 	TranslationService translationService;
 
 	@PostMapping("/translate")
-	public String translateText(@RequestBody RequestTranslationDTO request, HttpServletRequest req) {
+	public ResponseTranslationDTO translateText(@RequestBody RequestTranslationDTO request, HttpServletRequest req) {
 		return translationService.translateText(request, req.getRemoteAddr());
 	}
 }

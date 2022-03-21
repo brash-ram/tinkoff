@@ -1,6 +1,7 @@
 package com.tinkoff.service;
 
 import com.tinkoff.dto.RequestTranslationDTO;
+import com.tinkoff.dto.ResponseTranslationDTO;
 import com.tinkoff.dto.ResponseYandexDTO;
 import com.tinkoff.entity.Request;
 import com.tinkoff.repository.RequestRepository;
@@ -42,7 +43,7 @@ public class TranslationService {
 				ResponseYandexDTO.class);
 	}
 
-	public String  translateText(RequestTranslationDTO request, String ip) {
+	public ResponseTranslationDTO  translateText(RequestTranslationDTO request, String ip) {
 		StringBuilder line = new StringBuilder();
 		for (String word : request.getText().split(" ")) {
 			line.append(translateWord(word, request.getToLanguage()).getTranslations().get(0).get("text")).append(" ");
@@ -52,11 +53,6 @@ public class TranslationService {
 				request.getToLanguage()).getTranslations().get(0).get("detectedLanguageCode");
 		requestRepository.save(new Request(request.getText(), line.toString(), ip, fromLanguage, request.getToLanguage(), cal.getTime()));
 
-		for (Request req : requestRepository.findAll()) {
-			System.out.println(req.getTime());
-			System.out.println(req.getFromLanguage());
-		}
-
-		return line.toString();
+		return new ResponseTranslationDTO(line.toString());
 	}
 }
