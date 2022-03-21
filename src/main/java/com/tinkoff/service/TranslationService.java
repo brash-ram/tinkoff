@@ -21,7 +21,7 @@ public class TranslationService {
 	RequestRepository requestRepository;
 
 	private HttpEntity<Map<String, Object>> getBody(String word, String toLanguage) {
-		String token = "t1.9euelZqKm5GUiozGz4vMy5bHzYmKie3rnpWalMqMxs_MkJ3Ik46Ym5yNyMbl8_cAVR1u-e91eilx_t3z90ADG27573V6KXH-.fq7tGWbHQYZl88w5SrF4OpfGpj4gt4VgL3fRxYwU7_-yRsP_WbrjXBNzrOgNE8bDrLdMmkhuxeiuNUh30zCDBA";
+		String token = "t1.9euelZqSkZbIysfHlpqcjpjJjM3OnO3rnpWalMqMxs_MkJ3Ik46Ym5yNyMbl8_c5KRxu-e90GWAq_t3z93lXGW7573QZYCr-.i-4yy_XeG7Us_18xCNF11Si3NbTesHKFo31i7wNkr-5Bp7_0iViBVvEnjz35I-y3uo06lIycMYFkJyXfaJU7BA";
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.add("Authorization", "Bearer "+token);
